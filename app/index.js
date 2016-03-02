@@ -6,6 +6,7 @@ const url = (window.location != window.parent.location)
   ? document.referrer
   : document.location.href;
 
+
 if (url.match(/^http(s?):\/\/bowser\./)) {
   const delegate = new Delegate(document.body);
 
@@ -14,9 +15,15 @@ if (url.match(/^http(s?):\/\/bowser\./)) {
     if (target.href && target.href.match(/^http(s?):\/\//)) {
       e.preventDefault();
       window.parent.postMessage({
-        id: 'bowser',
-        url: target.href,
+        id: 'bowser-click',
+        to: target.href,
+        from: window.location.href,
       }, '*');
     }
   });
+
+  window.parent.postMessage({
+    id: 'bowser-installed',
+    installed: true,
+  }, '*');
 }

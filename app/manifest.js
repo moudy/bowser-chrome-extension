@@ -1,13 +1,8 @@
 const manifest = {
   'name': 'Bowser',
-  'externally_connectable': {
-    'matches': [
-      '*://bowser.com/*'
-    ]
-  },
-  'version': '0.0.1',
+  'version': '0.0.4',
   'manifest_version': 2,
-  'description': 'Inject',
+  'description': 'Layered browsing.',
   'content_scripts': [
     {'js': ['index.js'], 'matches': ['<all_urls>'], 'all_frames':true}
   ],
